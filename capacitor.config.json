@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "notes-app",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
