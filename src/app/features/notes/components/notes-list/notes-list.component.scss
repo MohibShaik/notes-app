@@ -1,0 +1,32 @@
+.sub-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px;
+
+    > .add-btn {
+        margin: 15px 0px;
+        height: 30px;
+        text-transform: capitalize;
+    }
+}
+
+.container {
+    height: 100%;
+
+    .img-wrapper {
+        height: 50%;
+        text-align: center;
+        padding: 0.6rem 1rem;
+
+        > img {
+            height: 100%;
+        }
+    }
+
+    .add-btn {
+        margin: 0px 1.2rem;
+        font-size: 14px;
+        font-weight: 600;
+    }
+}

@@ -1,0 +1,83 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" class="icon-btn" (click)="closeModal()">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="heading">
+      Add Note
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="icon-btn">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="form-container sign-in-container">
+    <form [formGroup]="addNoteForm" class="d-flex flex-column align-items-center">
+
+      <div class="form-control">
+        <ion-item lines="none" class="input-field" >
+          <ion-label position="floating">Title</ion-label>
+          <ion-input formControlName="title" class="ioninput"></ion-input>
+        </ion-item>
+
+        <div class="error" *ngIf="f.title.touched && f.title.invalid">
+          <div *ngIf="f.emailAddress.errors?.required">
+            Title is Required
+          </div>
+          <div *ngIf="f.title.errors?.minlength">
+            Title should have minimum 5 characters
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <ion-item lines="none" class="input-field" >
+          <ion-label position="floating">Label</ion-label>
+          <ion-input formControlName="label" class="ioninput"></ion-input>
+        </ion-item>
+
+        <div class="error" *ngIf="f.label.touched && f.label.invalid">
+          <div *ngIf="f.label.errors?.required">
+            label is Required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <ion-item lines="none" class="input-field" >
+          <ion-label position="floating">Category</ion-label>
+          <ion-input formControlName="category" class="ioninput"></ion-input>
+        </ion-item>
+
+        <div class="error" *ngIf="f.category.touched && f.category.invalid">
+          <div *ngIf="f.category.errors?.required">
+            Title is Required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <ion-item lines="none" class="input-field">
+          <ion-label position="floating">Description</ion-label>
+          <ion-textarea formControlName="description" class="ioninput" rows="15" cols="20"></ion-textarea>
+        </ion-item>
+
+        <div class="error" *ngIf="f.description.touched && f.description.invalid">
+          <div *ngIf="f.description.errors?.required">
+            description is Required
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>

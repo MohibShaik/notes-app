@@ -1,0 +1,38 @@
+.form-control {
+    margin: 25px 10px;
+    > .input-field {
+        border: 1px solid #e0e0e0;
+        margin-bottom: 5px;
+        border-radius: 10px;
+    }
+}
+.title {
+    h2 {
+        font-weight: bolder;
+        font-size: 28px;
+        color: var(--ion-color-black);
+    }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+.space-between {
+    display: flex;
+    justify-content: space-between;
+}
+.f-end {
+    display: flex;
+    justify-content: end;
+}
+.f-right {
+    float: right;
+}
+
+.f-18 {
+    font-size: 18px;
+}
+.text-center {
+    text-align: center;
+}

@@ -1,0 +1,45 @@
+<ion-content>
+  <div class="sub-header">
+    <p>Notes List</p>
+    <ion-button (click)="addNotes()" class="add-btn">
+      <span>
+        <ion-icon name="add-outline"></ion-icon>
+      </span>
+      Add Note
+    </ion-button>
+
+  </div>
+
+  <ng-container *ngIf="notesList?.length; then hadData; else noData">
+  </ng-container>
+
+  <ng-template #hadData>
+    <div class="list">
+      <ion-card *ngFor="let n of notesList">
+        <ion-card-header>
+          <ion-card-title>{{n?.title}}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+          {{n?.description}}
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ng-template>
+
+  <ng-template #noData>
+    <div class="container">
+
+      <div class="img-wrapper">
+        <img src="../../../../../assets/images/no-data-found.png" alt="">
+      </div>
+
+      <h2 class="text-center">No Records Found</h2>
+      <p class="text-center">Looks like you haven't added any notes </p>
+      <ion-button expand="block" class="add-btn" (click)="addNotes()">Add New Notes</ion-button>
+    </div>
+  </ng-template>
+
+
+
+</ion-content>

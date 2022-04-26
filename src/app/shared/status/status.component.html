@@ -1,0 +1,50 @@
+<ion-content>
+  <div class="success-wrapper" *ngIf="status==='success'">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size='12'>
+          <img src="../../../../assets/images/success-msg.jpg" alt="success">
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size='12' class="text-center f-18 fw-600">
+          <p class="f-18">{{message}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size='12' class="text-center">
+          <ion-button expand="block" class="register-btn" (click)="close(true)">Continue</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <div class="success-wrapper" *ngIf="status==='failure'">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size='12'>
+          <img src="../../../../assets/images/failure-msg.jpg" alt="success">
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size='12' class="text-center f-18 fw-600">
+          <p class="f-18">{{message}}</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col size='12' class="text-center">
+          <ion-button expand="block" class="register-btn" (click)="close(false)">Retry</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+</ion-content>
