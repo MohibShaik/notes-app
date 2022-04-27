@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-button fill="clear" class="icon-btn" (click)="closeModal()">
+      <ion-button fill="clear" class="icon-btn" (click)="closeModal(false)">
         <ion-icon name="close-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -11,7 +11,7 @@
     </ion-title>
 
     <ion-buttons slot="end">
-      <ion-button fill="clear" class="icon-btn">
+      <ion-button fill="clear" class="icon-btn" (click)="addNotes()">
         <ion-icon name="checkmark-circle-outline"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -25,7 +25,7 @@
     <form [formGroup]="addNoteForm" class="d-flex flex-column align-items-center">
 
       <div class="form-control">
-        <ion-item lines="none" class="input-field" >
+        <ion-item lines="none" class="input-field">
           <ion-label position="floating">Title</ion-label>
           <ion-input formControlName="title" class="ioninput"></ion-input>
         </ion-item>
@@ -41,7 +41,7 @@
       </div>
 
       <div class="form-control">
-        <ion-item lines="none" class="input-field" >
+        <ion-item lines="none" class="input-field">
           <ion-label position="floating">Label</ion-label>
           <ion-input formControlName="label" class="ioninput"></ion-input>
         </ion-item>
@@ -54,7 +54,7 @@
       </div>
 
       <div class="form-control">
-        <ion-item lines="none" class="input-field" >
+        <ion-item lines="none" class="input-field">
           <ion-label position="floating">Category</ion-label>
           <ion-input formControlName="category" class="ioninput"></ion-input>
         </ion-item>
@@ -67,10 +67,48 @@
       </div>
 
       <div class="form-control">
-        <ion-item lines="none" class="input-field">
-          <ion-label position="floating">Description</ion-label>
-          <ion-textarea formControlName="description" class="ioninput" rows="15" cols="20"></ion-textarea>
-        </ion-item>
+
+        <quill-editor formControlName="description">
+          <div quill-editor-toolbar>
+            <!-- text format  -->
+            <span class="ql-formats">
+              <button class="ql-bold" [title]="'Bold'"></button>
+              <button class="ql-italic" [title]="'Italic '"></button>
+              <button class="ql-underline" [title]="'Underline'"></button>
+              <button class="ql-strike" [title]="'Strikethrough'"></button>
+            </span>
+
+            <!-- alignment  -->
+            <span class="ql-formats">
+              <select class="ql-align" [title]="'Aligment'">
+                <option selected></option>
+                <option value="center"></option>
+                <option value="right"></option>
+                <option value="justify"></option>
+              </select>
+            </span>
+
+            <!-- text size  -->
+            <span class="ql-formats">
+              <select class="ql-size" [title]="'Size'">
+                <option value="small"></option>
+                <option value="large"></option>
+                <option value="huge"></option>
+              </select>
+            </span>
+
+            <!-- <span class="ql-formats">
+              <select class="ql-font">
+                <option selected>Sans Serif</option>
+                <option value="inconsolata">Inconsolata</option>
+                <option value="roboto">Roboto</option>
+                <option value="mirza">Mirza</option>
+                <option value="arial">Arial</option>
+              </select>
+            </span> -->
+
+          </div>
+        </quill-editor>
 
         <div class="error" *ngIf="f.description.touched && f.description.invalid">
           <div *ngIf="f.description.errors?.required">
@@ -78,6 +116,8 @@
           </div>
         </div>
       </div>
+
+
     </form>
   </div>
 </ion-content>

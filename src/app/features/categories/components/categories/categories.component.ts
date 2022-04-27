@@ -51,7 +51,7 @@ export class CategoriesComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.toasterservice.presentToast(error?.error?.message);
+        this.toasterservice.presentToast(error?.error?.message , 'error-text');
       }
     );
   }

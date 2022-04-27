@@ -30,21 +30,3 @@
         font-weight: 600;
     }
 }
-
-.cat-card {
-    width: 90%;
-    height: 95%;
-
-    > .cat-title {
-        font-size: 1.2rem;
-        font-weight: 500;
-    }
-}
-
-.even {
-    border: 1px solid var(--ion-color-warning);
-}
-
-.odd {
-    border: 1px solid var(--ion-color-primary);
-}

@@ -38,8 +38,6 @@ ion-tab-button {
     font-weight: 600;
     letter-spacing: 0.8px;
     color: var(--ion-color-black);
-
-    
   }
 }
 
@@ -56,4 +54,12 @@ ion-tab-button {
   background: var(--ion-color-primary);
   font-weight: 600;
   font-size: 14px;
+}
+
+.user-avator {
+  > img {
+    width: 28px;
+    height: 28px;
+    margin: 10px 20px 0px 20px;
+  }
 }

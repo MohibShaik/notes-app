@@ -10,4 +10,8 @@ export class DataService {
     const userData = JSON.parse(sessionStorage.getItem('user'));
     return userData;
   }
+
+  public getToken(): boolean {
+    return !!sessionStorage.getItem('accessToken');
+  }
 }

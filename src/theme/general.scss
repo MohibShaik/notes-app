@@ -36,3 +36,54 @@
 .text-center {
     text-align: center;
 }
+.fw-600 {
+    font-weight: 600;
+}
+
+.f-22 {
+    font-size: 22px;
+}
+
+.f-24 {
+    font-size: 24px;
+}
+
+.f-16 {
+    font-size: 16px;
+}
+
+.f-14 {
+    font-size: 14px;
+}
+
+.danger-text {
+    color: var(--ion-color-danger) !important;
+}
+
+.cat-card {
+    width: 90%;
+    height: 100%;
+}
+
+.even {
+    border: 1px solid var(--ion-color-warning);
+}
+
+.odd {
+    border: 1px solid var(--ion-color-primary);
+}
+.cat-title {
+    font-size: 0.89rem;
+    font-weight: 500;
+    text-transform: capitalize !important;
+}
+
+.success-text {
+    background: var(--ion-color-light);
+    color: #01796f;
+}
+
+.error-text {
+    background: var(--ion-color-light);
+    color: var(--ion-color-danger);
+}

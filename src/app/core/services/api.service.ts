@@ -17,6 +17,7 @@ const API_URLS = {
   createNewUser: `users/signup`,
   login: `users/login`,
   listOfNotesByUserId: (userId: string) => `notes/${userId}/notes_list`,
+  addNewNotes:`notes/`,
 
   //categories
   listOfCategories: `categories`,

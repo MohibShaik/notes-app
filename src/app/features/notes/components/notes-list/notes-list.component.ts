@@ -53,7 +53,7 @@ export class NotesListComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.toasterservice.presentToast(error?.error?.message);
+        this.toasterservice.presentToast(error?.error?.message , 'error-text');
       }
     );
   }
@@ -67,7 +67,10 @@ export class NotesListComponent implements OnInit {
     });
 
     modal.onDidDismiss().then((dataReturned) => {
-      
+      if (dataReturned.data) {
+        this.toasterservice.presentToast('Note Added Successfully' , 'success-text');
+        this.getListOfNotes();
+      }
     });
 
     return await modal.present();

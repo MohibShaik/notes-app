@@ -1,14 +1,3 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
-
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
 
@@ -26,3 +15,20 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "./theme/general.scss";
 
+@import "~quill/dist/quill.core.css";
+@import "~quill/dist/quill.snow.css";
+
+[contenteditable] {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.ql-toolbar {
+  border-radius: 10px 10px 0px 0px;
+  background-color: #67aeee;
+}
+
+.ql-container {
+  border-radius: 0px 0px 10px 10px;
+  min-height: 300px;
+}
