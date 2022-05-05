@@ -9,4 +9,7 @@ export interface UserInfo {
   emailAddress: string;
   date: string;
   id: string;
+  role: string;
+  gender?: string;
+  dateofbirth?: string;
 }

@@ -17,11 +17,14 @@ const API_URLS = {
   createNewUser: `users/signup`,
   login: `users/login`,
   listOfNotesByUserId: (userId: string) => `notes/${userId}/notes_list`,
-  addNewNotes:`notes/`,
+  addNewNotes: `notes/`,
 
   //categories
   listOfCategories: `categories`,
 
+  //labels
+  listOfLabels: `labels`,
+  addNewLabel: `labels/`,
 };
 
 @Injectable({

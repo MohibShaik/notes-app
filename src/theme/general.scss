@@ -56,6 +56,9 @@
     font-size: 14px;
 }
 
+.f-12 {
+    font-size: 12px;
+}
 .danger-text {
     color: var(--ion-color-danger) !important;
 }
@@ -63,6 +66,16 @@
 .cat-card {
     width: 90%;
     height: 100%;
+
+    > .cat-card-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        > p {
+            margin: 0px;
+            font-size: 0.6rem;
+        }
+    }
 }
 
 .even {
@@ -73,17 +86,22 @@
     border: 1px solid var(--ion-color-primary);
 }
 .cat-title {
-    font-size: 0.89rem;
+    font-size: 0.95rem;
     font-weight: 500;
     text-transform: capitalize !important;
 }
 
 .success-text {
-    background: var(--ion-color-light);
+    // background: var(--ion-color-light);
     color: #01796f;
 }
 
 .error-text {
-    background: var(--ion-color-light);
+    // background: var(--ion-color-light);
     color: var(--ion-color-danger);
+}
+
+.error {
+    color: #dc143c;
+    padding: 10px;
 }

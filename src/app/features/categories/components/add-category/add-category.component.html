@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button fill="clear" class="icon-btn" (click)="closeModal(false)">
+        <ion-icon name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="heading">
+      Add Category
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="icon-btn" (click)="addNewCategory()">
+        <ion-icon name="checkmark-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="form-container sign-in-container">
+    <form [formGroup]="addCategoryForm" class="d-flex flex-column align-items-center">
+
+      <div class="form-control">
+        <ion-item lines="none" class="input-field">
+          <ion-label position="floating">Category Name</ion-label>
+          <ion-input formControlName="name" class="ioninput"></ion-input>
+        </ion-item>
+
+        <div class="error" *ngIf="f.name.touched && f.name.invalid">
+          <div *ngIf="f.name.errors?.required">
+            Category name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <ion-item lines="none" class="input-field">
+          <ion-label position="floating">Description</ion-label>
+          <ion-input formControlName="description" class="ioninput"></ion-input>
+        </ion-item>
+
+        <div class="error" *ngIf="f.description.touched && f.description.invalid">
+          <div *ngIf="f.description.errors?.required">
+            Description is required
+          </div>
+        </div>
+      </div>
+
+
+    </form>
+  </div>
+</ion-content>

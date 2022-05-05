@@ -1,0 +1,12 @@
+.sub-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 15px;
+
+    > .add-btn {
+        margin: 15px 0px;
+        height: 30px;
+        text-transform: capitalize;
+    }
+}

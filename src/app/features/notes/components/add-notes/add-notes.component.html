@@ -31,11 +31,8 @@
         </ion-item>
 
         <div class="error" *ngIf="f.title.touched && f.title.invalid">
-          <div *ngIf="f.emailAddress.errors?.required">
-            Title is Required
-          </div>
-          <div *ngIf="f.title.errors?.minlength">
-            Title should have minimum 5 characters
+          <div *ngIf="f.title.errors?.required">
+            Title is required
           </div>
         </div>
       </div>
@@ -43,12 +40,16 @@
       <div class="form-control">
         <ion-item lines="none" class="input-field">
           <ion-label position="floating">Label</ion-label>
-          <ion-input formControlName="label" class="ioninput"></ion-input>
+          <ion-select multiple value="notifications" interface="action-sheet" formControlName="label" class="ioninput"
+            cancelText="cancel" okText="ok">
+            <ion-select-option [value]="l?.id" *ngFor="let l of labels">{{l?.name}}</ion-select-option>
+          </ion-select>
+          <!-- <ion-input formControlName="label" class="ioninput"></ion-input> -->
         </ion-item>
 
         <div class="error" *ngIf="f.label.touched && f.label.invalid">
           <div *ngIf="f.label.errors?.required">
-            label is Required
+            Label is required
           </div>
         </div>
       </div>
@@ -56,12 +57,15 @@
       <div class="form-control">
         <ion-item lines="none" class="input-field">
           <ion-label position="floating">Category</ion-label>
-          <ion-input formControlName="category" class="ioninput"></ion-input>
+          <ion-select multiple value="category" interface="action-sheet" formControlName="category" class="ioninput"
+            cancelText="cancel" okText="ok">
+            <ion-select-option [value]="c?.id" *ngFor="let c of categoriesList">{{c?.name}}</ion-select-option>
+          </ion-select>
         </ion-item>
 
         <div class="error" *ngIf="f.category.touched && f.category.invalid">
           <div *ngIf="f.category.errors?.required">
-            Title is Required
+            Category is required
           </div>
         </div>
       </div>

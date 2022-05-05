@@ -36,8 +36,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   public logout(){
-    sessionStorage.clear();
-    this.router.navigateByUrl("/login");
+   this.dataService.logout();
   }
 
 }

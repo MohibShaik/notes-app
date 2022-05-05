@@ -5,11 +5,6 @@ import { NotesListComponent } from './components/notes-list/notes-list.component
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'list',
-    pathMatch: 'full',
-  },
-  {
-    path: 'list',
     component: NotesListComponent,
   },
 ];

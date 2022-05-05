@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
-import { Category } from 'src/app/core/models/category.model';
+import { LabelItem, Labels } from 'src/app/core/models';
 import { AjaxService } from 'src/app/core/services/ajax.service';
 import { ApiService } from 'src/app/core/services/api.service';
 import { DataService } from 'src/app/core/services/data.service';
 import { ToasterService } from 'src/app/core/services/toaster.service';
-import { AddCategoryComponent } from '../add-category/add-category.component';
+import { AddLabelComponent } from '../add-label/add-label.component';
 
 @Component({
-  selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss'],
+  selector: 'app-label-list',
+  templateUrl: './label-list.component.html',
+  styleUrls: ['./label-list.component.scss'],
 })
-export class CategoriesComponent implements OnInit {
+export class LabelListComponent implements OnInit {
   public userData: any;
-  public categoriesList: Category[];
+  labels: LabelItem[];
   constructor(
+    private router: Router,
     private apiService: ApiService,
     private ajaxService: AjaxService,
-    private router: Router,
     private toasterservice: ToasterService,
     private dataService: DataService,
     public modalController: ModalController
@@ -32,22 +32,23 @@ export class CategoriesComponent implements OnInit {
   private getUserInfo() {
     this.userData = this.dataService.getCurrentUserInfo();
     if (this.userData) {
-      this.getListOfCategories();
+      this.getListOfLabels();
     }
   }
 
-  private getListOfCategories() {
+  private getListOfLabels() {
     const { API_CONFIG, API_URLs } = this.apiService;
-    const url = `${API_CONFIG.apiHost}${API_URLs.listOfCategories}`;
+    const url = `${API_CONFIG.apiHost}${API_URLs.listOfLabels}`;
 
     const config = {
       url,
       cacheKey: false,
     };
+
     this.ajaxService.get(config).subscribe(
-      (response) => {
+      (response: Labels) => {
         console.log(response);
-        this.categoriesList = response;
+        this.labels = response?.data;
       },
       (error) => {
         console.log(error);
@@ -56,9 +57,9 @@ export class CategoriesComponent implements OnInit {
     );
   }
 
-  public async addNewCategory() {
+  public async addNewLabel() {
     const modal = await this.modalController.create({
-      component: AddCategoryComponent,
+      component: AddLabelComponent,
       componentProps: {
         userInfo: this.userData.user,
       },
@@ -67,10 +68,10 @@ export class CategoriesComponent implements OnInit {
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned.data) {
         this.toasterservice.presentToast(
-          'Category Added Successfully',
+          'Label Added Successfully',
           'success-text'
         );
-        this.getListOfCategories();
+        this.getListOfLabels();
       }
     });
 

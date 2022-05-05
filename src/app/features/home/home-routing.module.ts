@@ -19,11 +19,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('../notes/notes.module').then((m) => m.NotesModule),
       },
-      {
-        path: 'tasks',
-        loadChildren: () =>
-          import('../tasks/tasks.module').then((m) => m.TasksModule),
-      },
+      // {
+      //   path: 'tasks',
+      //   loadChildren: () =>
+      //     import('../tasks/tasks.module').then((m) => m.TasksModule),
+      // },
       {
         path: 'categories',
         loadChildren: () =>
@@ -36,6 +36,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../account-settings/account-settings.module').then(
             (m) => m.AccountSettingsModule
+          ),
+      },
+      {
+        path: 'labels',
+        loadChildren: () =>
+          import('../label-management/label-management.module').then(
+            (m) => m.LabelManagementModule
           ),
       },
     ],

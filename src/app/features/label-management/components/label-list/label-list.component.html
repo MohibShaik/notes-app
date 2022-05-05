@@ -1,29 +1,29 @@
 <ion-content>
   <div class="sub-header">
-    <p>Categories List</p>
-    <ion-button class="add-btn" *ngIf="userData.user?.role==='admin'" (click)="addNewCategory()">
+    <p>Labels</p>
+    <ion-button class="add-btn" *ngIf="userData.user?.role==='admin'" (click)="addNewLabel()">
       <span>
         <ion-icon name="add-outline"></ion-icon>
       </span>
-      Add Category
+      Add New Label
     </ion-button>
 
   </div>
 
-  <ng-container *ngIf="categoriesList?.length; then hadData; else noData">
+  <ng-container *ngIf="labels?.length; then hadData; else noData">
   </ng-container>
 
   <ng-template #hadData>
+
     <ion-grid>
       <ion-row>
-        <ion-col size="6" *ngFor="let c of categoriesList;let even = even; let odd = odd">
+        <ion-col size="6" *ngFor="let c of labels;let even = even; let odd = odd">
           <ion-card [ngClass]="{ odd: odd, even: even }" class="cat-card">
             <ion-card-header>
               <ion-card-title class="cat-title">{{c?.name}}</ion-card-title>
             </ion-card-header>
           </ion-card>
         </ion-col>
-
       </ion-row>
     </ion-grid>
 
@@ -31,11 +31,9 @@
 
   <ng-template #noData>
     <!-- <div class="container">
-
       <div class="img-wrapper">
         <img src="../../../../../assets/images/no-data-found.png" alt="">
       </div>
-
       <h2 class="text-center">No Records Found</h2>
       <p class="text-center">Looks like you haven't added any notes </p>
       <ion-button expand="block" class="add-btn">Add New Notes</ion-button>

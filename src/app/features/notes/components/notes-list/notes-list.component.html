@@ -1,4 +1,9 @@
 <ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="getListOfNotes($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <div class="sub-header">
     <p>Notes List</p>
     <ion-button (click)="addNotes()" class="add-btn">
@@ -30,17 +35,17 @@
       <ion-row>
         <ion-col size="12" *ngFor="let n of notesList;let even = even; let odd = odd">
           <ion-card [ngClass]="{ odd: odd, even: even }" class="cat-card">
-            <ion-card-header>
+            <ion-card-header class="cat-card-header">
               <ion-card-title class="cat-title">{{n?.title}}</ion-card-title>
+              <p>{{n?.createdDate | date :"dd/MM/YYYY"}}</p>
             </ion-card-header>
 
-            <ion-card-content>
-              <!-- <div class="content-wrapper">
-                
-                <p>
-
-                </p>
-              </div> -->
+            <ion-card-content class="note-card-content">
+              <div class="labels">
+                <ion-chip [color]="l?.bgColor" *ngFor="let l of n.label" class="f-12">
+                  <ion-label [color]="l?.bgColor">{{l?.name}}</ion-label>
+                </ion-chip>
+              </div>
             </ion-card-content>
           </ion-card>
         </ion-col>

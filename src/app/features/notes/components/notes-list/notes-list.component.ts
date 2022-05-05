@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalController } from '@ionic/angular';
+import { LabelItem } from 'src/app/core/models';
 import { NotesItem } from 'src/app/core/models/notes.model';
 import { AjaxService } from 'src/app/core/services/ajax.service';
 import { ApiService } from 'src/app/core/services/api.service';
@@ -16,6 +17,7 @@ import { AddNotesComponent } from '../add-notes/add-notes.component';
 export class NotesListComponent implements OnInit {
   public userData: any;
   public notesList: NotesItem[];
+  bgColor: string;
   constructor(
     private apiService: ApiService,
     private ajaxService: AjaxService,
@@ -36,7 +38,7 @@ export class NotesListComponent implements OnInit {
     }
   }
 
-  private getListOfNotes() {
+  public getListOfNotes(event?: any) {
     const { API_CONFIG, API_URLs } = this.apiService;
     const url = `${API_CONFIG.apiHost}${API_URLs.listOfNotesByUserId(
       this.userData.user.id
@@ -50,12 +52,37 @@ export class NotesListComponent implements OnInit {
       (response) => {
         console.log(response);
         this.notesList = response;
+        if (event) {
+          event.target.complete();
+        }
+        this.notesList.forEach((x) => this.pickLabelColor(x.label));
       },
       (error) => {
-        console.log(error);
-        this.toasterservice.presentToast(error?.error?.message , 'error-text');
+        console.log(error.error);
+        if (error.error.status === 403) {
+          this.toasterservice.presentToast(error?.error?.message, 'error-text');
+        }
       }
     );
+  }
+
+  public pickLabelColor(labels: LabelItem[]) {
+    let bgColors = [
+      'primary',
+      'secondary',
+      'success',
+      'danger',
+      'warning',
+      'medium',
+    ];
+    labels.forEach(
+      (label) =>
+        (label.bgColor = bgColors[Math.floor(Math.random() * bgColors.length)])
+    );
+    console.log(labels);
+
+    // console.log(bgColors[Math.floor(Math.random() * bgColors.length)]);
+    // labels.bgColor = bgColors[Math.floor(Math.random() * bgColors.length)]
   }
 
   public async addNotes() {
@@ -68,7 +95,10 @@ export class NotesListComponent implements OnInit {
 
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned.data) {
-        this.toasterservice.presentToast('Note Added Successfully' , 'success-text');
+        this.toasterservice.presentToast(
+          'Note Added Successfully',
+          'success-text'
+        );
         this.getListOfNotes();
       }
     });
