@@ -107,7 +107,7 @@
           <div class="form-control">
             <ion-label class="label-text">Average Monthly Income</ion-label>
             <ion-item lines="none" class="input-field">
-              <ion-input formControlName="averageMonthlyIncome"></ion-input>
+              <ion-input formControlName="averageMonthlyIncome" appNumberOnly></ion-input>
             </ion-item>
             <div class="error" *ngIf="f.averageMonthlyIncome.touched && f.averageMonthlyIncome.invalid">
               <div *ngIf="f.averageMonthlyIncome.errors?.required">

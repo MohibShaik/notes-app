@@ -43,7 +43,7 @@
       <div class="form-control">
         <ion-label class="label-text">Amount</ion-label>
         <ion-item lines="none" class="input-field">
-          <ion-input formControlName="amount" class="ioninput" placeholder="Eg : 4,000"></ion-input>
+          <ion-input formControlName="amount" class="ioninput" placeholder="Eg : 4,000" appNumberOnly></ion-input>
         </ion-item>
         <div class="error" *ngIf="f.amount.touched && f.amount.invalid">
           <div *ngIf="f.amount.errors?.required">

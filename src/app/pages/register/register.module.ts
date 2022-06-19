@@ -8,6 +8,7 @@ import { RegisterPageRoutingModule } from './register-routing.module';
 
 import { RegisterPage } from './register.page';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { RouterModule } from '@angular/router';
     RegisterPageRoutingModule,
     ReactiveFormsModule,
     RouterModule,
+    SharedModule
   ],
   declarations: [RegisterPage],
 })
