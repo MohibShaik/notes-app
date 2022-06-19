@@ -11,7 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'notes',
+        redirectTo: 'expenses',
         pathMatch: 'full',
       },
       {
@@ -43,6 +43,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('../label-management/label-management.module').then(
             (m) => m.LabelManagementModule
+          ),
+      },
+      {
+        path: 'expenses',
+        loadChildren: () =>
+          import('../expenses-management/expenses-management.module').then(
+            (m) => m.ExpensesManagementModule
           ),
       },
     ],

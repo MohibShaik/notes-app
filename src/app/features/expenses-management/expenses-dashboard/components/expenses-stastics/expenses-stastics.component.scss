@@ -1,0 +1,10 @@
+.static-greet {
+    > p {
+        padding: 0px 15px;
+
+        > span {
+            font-size: 18px;
+            font-weight: 600;
+        }
+    }
+}

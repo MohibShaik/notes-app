@@ -21,10 +21,15 @@ const API_URLS = {
 
   //categories
   listOfCategories: `categories`,
+  listOfCategoriesByTabName: (tabName: string) => `categories/${tabName}`,
 
   //labels
   listOfLabels: `labels`,
   addNewLabel: `labels/`,
+
+  // Expenses
+  listOfExpenses: (userId: string) => `expenses/${userId}`,
+  addExpense:`expenses`
 };
 
 @Injectable({

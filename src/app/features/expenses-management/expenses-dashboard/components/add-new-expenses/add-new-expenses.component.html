@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+
+    <ion-buttons slot="start">
+      <ion-button fill="clear" class="icon-btn" color="danger" (click)="closeModal(false)">
+        Cancel
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title class="text-center bold">
+      Add Expense
+    </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-button fill="clear" class="icon-btn" (click)="addNewExpense()" color="primary">
+        Done
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container sign-in-container">
+    <form [formGroup]="addExpenseForm" class="d-flex flex-column align-items-center">
+
+      <div class="form-control">
+        <ion-label class="label-text">Category Name</ion-label>
+        <ion-item lines="none" class="input-field">
+          <ion-select value="brown" okText="ok" cancelText="cancel" formControlName="category" class="primary-select"
+            placeholder="Eg : Groceries">
+            <ng-container *ngFor="let c of categoriesList">
+              <ion-select-option [value]="c?.id">{{c?.name}}</ion-select-option>
+            </ng-container>
+          </ion-select>
+        </ion-item>
+        <div class="error" *ngIf="f.category.touched && f.category.invalid">
+          <div *ngIf="f.category.errors?.required">
+            Category name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <ion-label class="label-text">Amount</ion-label>
+        <ion-item lines="none" class="input-field">
+          <ion-input formControlName="amount" class="ioninput" placeholder="Eg : 4,000"></ion-input>
+        </ion-item>
+        <div class="error" *ngIf="f.amount.touched && f.amount.invalid">
+          <div *ngIf="f.amount.errors?.required">
+            Amount is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <ion-label class="label-text">Expense Name</ion-label>
+        <ion-item lines="none" class="input-field">
+          <ion-input formControlName="name" class="ioninput" placeholder="Eg : Brought Groceries"></ion-input>
+        </ion-item>
+
+        <div class="error" *ngIf="f.name.touched && f.name.invalid">
+          <div *ngIf="f.name.errors?.required">
+            Expense Name is required
+          </div>
+        </div>
+      </div>
+
+      <div class="form-control">
+        <ion-label class="label-text">Date</ion-label>
+        <ion-item lines="none" class="input-field">
+          <ion-input formControlName="createdDate" class="ioninput" placeholder="DD/MM/YYYY"></ion-input>
+        </ion-item>
+
+        <div class="error" *ngIf="f.createdDate.touched && f.createdDate.invalid">
+          <div *ngIf="f.createdDate.errors?.required">
+            Amount is required
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</ion-content>

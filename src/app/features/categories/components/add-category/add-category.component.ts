@@ -26,6 +26,7 @@ export class AddCategoryComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(4)]],
       description: ['', [Validators.required]],
       userId: ['', [Validators.required]],
+      tab: ['', [Validators.required]],
     });
   }
 

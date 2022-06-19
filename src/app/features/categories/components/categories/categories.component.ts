@@ -62,6 +62,8 @@ export class CategoriesComponent implements OnInit {
       componentProps: {
         userInfo: this.userData.user,
       },
+      showBackdrop: true,
+      cssClass: 'change-address-shipping-modal',
     });
 
     modal.onDidDismiss().then((dataReturned) => {

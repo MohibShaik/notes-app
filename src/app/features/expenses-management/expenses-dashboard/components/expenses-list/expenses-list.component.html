@@ -1,0 +1,72 @@
+<ion-refresher slot="fixed" (ionRefresh)="getListOfExpenses($event)">
+  <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+
+
+<div class="content">
+
+  <div class="top-div">
+    <ion-card color="primary" class="stat-card">
+      <ion-card-header>
+        <ion-card-title class="title">Your Monthly Income</ion-card-title>
+        <ion-card-subtitle class="sub-title">{{userInfo?.averageMonthlyIncome| currency:"INR":"symbol"}}
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content class="content">
+
+        <div class="flex-item">
+          <p>Total Income</p>
+          <h3>{{userInfo?.averageMonthlyIncome}}</h3>
+        </div>
+
+        <div class="flex-item">
+          <p>Total Expenses</p>
+          <h3>{{totalExpenses ? totalExpenses : 0}}</h3>
+        </div>
+
+        <div class="flex-item">
+          <p>Balance</p>
+          <h3 [ngClass]="userInfo?.averageMonthlyIncome - totalExpenses >0 ? 'success-text' :'error-text'">
+            {{userInfo?.averageMonthlyIncome - totalExpenses }}</h3>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div class="list">
+    <ng-container *ngIf="expensesList?.length; then hadData; else noData">
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #hadData>
+  <ion-searchbar placeholder="Search..." animated="true"></ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" *ngFor="let e of expensesList;let even = even; let odd = odd">
+        <ion-card class="expense-card">
+          <ion-card-header class="exp-card-header">
+            <ion-card-title class="exp-title">{{e?.name}}</ion-card-title>
+            <p [ngClass]="e?.amount>10000 ? 'error-text' : 'success-text'">{{e?.amount | currency:"INR":"symbol"}}</p>
+          </ion-card-header>
+
+          <ion-card-content class="exp-card-content">
+            <p>{{e?.createdDate | date :"dd/MM/YYYY"}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ng-template>
+
+<ng-template #noData>
+  <div class="no-data-container">
+    <div class="img-wrapper">
+      <img src="../../../../../assets/images/no-data-found.png" alt="">
+    </div>
+    <h2 class="text-center f-22">No Records Found</h2>
+    <p class="text-center f-14">Looks like you haven't added any expenses </p>
+  </div>
+</ng-template>

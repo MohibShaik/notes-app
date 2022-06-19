@@ -10,6 +10,9 @@ export interface UserInfo {
   date: string;
   id: string;
   role: string;
-  gender?: string;
-  dateofbirth?: string;
+  gender: string;
+  dateofbirth: string;
+  averageMonthlyIncome: number;
+  totalExpenses?: number;
+  totalBalance?: number;
 }

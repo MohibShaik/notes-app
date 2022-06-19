@@ -1,12 +1,12 @@
 <ion-content>
   <div class="sub-header">
     <p>Categories List</p>
-    <ion-button class="add-btn" *ngIf="userData.user?.role==='admin'" (click)="addNewCategory()">
+    <!-- <ion-button class="add-btn" *ngIf="userData.user?.role==='admin'" (click)="addNewCategory()">
       <span>
         <ion-icon name="add-outline"></ion-icon>
       </span>
       Add Category
-    </ion-button>
+    </ion-button> -->
 
   </div>
 
@@ -42,6 +42,11 @@
     </div> -->
   </ng-template>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button *ngIf="userData.user?.role==='admin'" (click)="addNewCategory()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 
 </ion-content>

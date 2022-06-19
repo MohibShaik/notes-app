@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AjaxService } from 'src/app/core/services/ajax.service';
@@ -15,6 +15,14 @@ export class RegisterPage implements OnInit {
   public passwordType: string = 'password';
   public passwordIcon: string = 'eye-off';
 
+  public currentDate = new Date()
+  @ViewChild('popover') popover!: any;
+  
+  public listOfGenders = [
+    { id: 1, name: 'Male' },
+    { id: 2, name: 'Female' },
+  ];
+
   constructor(
     private fb: FormBuilder,
     private apiService: ApiService,
@@ -26,6 +34,9 @@ export class RegisterPage implements OnInit {
       username: ['', [Validators.required]],
       emailAddress: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(4)]],
+      dateofbirth: [''],
+      gender: ['', [Validators.required]],
+      averageMonthlyIncome: ['', [Validators.required]],
     });
   }
 
@@ -38,6 +49,12 @@ export class RegisterPage implements OnInit {
   public hideShowPassword() {
     this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
     this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+  }
+
+  public onDOBSelection(event) {
+    console.log(event);
+    console.log(this.popover);
+    
   }
   public createUser() {
     if (this.signupForm.invalid) {
@@ -60,7 +77,7 @@ export class RegisterPage implements OnInit {
         },
         (error) => {
           console.log(error);
-          this.toasterservice.presentToast(error?.error?.message , 'error-text');
+          this.toasterservice.presentToast(error?.error?.message, 'error-text');
         }
       );
     }

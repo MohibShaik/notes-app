@@ -63,6 +63,10 @@
     color: var(--ion-color-danger) !important;
 }
 
+.bold {
+    font-weight: bold;
+}
+
 .cat-card {
     width: 90%;
     height: 100%;
@@ -78,6 +82,31 @@
     }
 }
 
+.expense-card {
+    width: 100%;
+    margin: 0px;
+    > .exp-card-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        > p {
+            margin: 0px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        > .exp-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            width: 50%;
+        }
+    }
+
+    > .exp-card-content {
+        > p {
+        }
+    }
+}
+
 .even {
     border: 1px solid var(--ion-color-warning);
 }
@@ -86,7 +115,7 @@
     border: 1px solid var(--ion-color-primary);
 }
 .cat-title {
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 500;
     text-transform: capitalize !important;
 }
@@ -104,4 +133,24 @@
 .error {
     color: #dc143c;
     padding: 10px;
+}
+
+.change-address-shipping-modal {
+    --height: 80%;
+    align-items: flex-end;
+}
+
+.primary-select,
+.ioninput {
+    width: 100%;
+    color: #4d4c4c;
+}
+
+.no-data-container {
+    .img-wrapper {
+        text-align: center;
+        img {
+            width: 50%;
+        }
+    }
 }

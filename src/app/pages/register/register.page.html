@@ -13,25 +13,25 @@
       <div class="form-container sign-in-container">
         <form [formGroup]="signupForm" class="d-flex flex-column align-items-center">
 
+          <!-- user name  -->
           <div class="form-control">
+            <ion-label class="label-text">User Name</ion-label>
             <ion-item lines="none" class="input-field">
-              <ion-label position="floating">User name</ion-label>
-              <ion-input formControlName="username"></ion-input>
+              <ion-input formControlName="username" placeholder="Eg : Mohib Shaik"></ion-input>
             </ion-item>
-
             <div class="error" *ngIf="f.username.touched && f.username.invalid">
               <div *ngIf="f.username.errors?.required">
-                User name is Required
+                User Name is Required
               </div>
             </div>
           </div>
 
+          <!-- Email Address  -->
           <div class="form-control">
+            <ion-label class="label-text">Email Address</ion-label>
             <ion-item lines="none" class="input-field">
-              <ion-label position="floating">Email Address</ion-label>
-              <ion-input formControlName="emailAddress"></ion-input>
+              <ion-input formControlName="emailAddress" placeholder="Eg : xyz@gmail.com"></ion-input>
             </ion-item>
-
             <div class="error" *ngIf="f.emailAddress.touched && f.emailAddress.invalid">
               <div *ngIf="f.emailAddress.errors?.required">
                 Email is Required
@@ -42,21 +42,78 @@
             </div>
           </div>
 
+          <!-- password  -->
           <div class="form-control">
+            <ion-label class="label-text">Password</ion-label>
             <ion-item lines="none" class="input-field">
-              <ion-label position="floating">Password</ion-label>
               <ion-input formControlName="password" [type]="passwordType"></ion-input>
-              <ion-icon slot="end" [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
-            </ion-item>
 
+              <ion-button fill="clear">
+                <ion-icon [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
+              </ion-button>
+            </ion-item>
             <div class="error" *ngIf="f.password.touched && f.password.invalid">
               <div *ngIf="f.password.errors?.required">
                 Password is Required
               </div>
             </div>
           </div>
-          <div class="other-links f-end">
-            <a class="fp-link">Forgot Password?</a>
+
+          <!-- Date of birth -->
+          <div class="form-control">
+            <ion-label class="label-text">Date Of Birth</ion-label>
+            <ion-item lines="none" class="input-field">
+              <ion-input [value]="signupForm.get('dateofbirth').value | date :'dd/MM/YYYY'"></ion-input>
+              <ion-button fill="clear" id="open-date-input">
+                <ion-icon icon="calendar"></ion-icon>
+              </ion-button>
+              <ion-popover trigger="open-date-input" show-backdrop="false" #popover>
+                <ng-template>
+                  <ion-datetime #popoverDatetime presentation="date" (ionChange)="popoverDatetime.confirm(true);"
+                    formControlName="dateofbirth">
+                  </ion-datetime>
+                </ng-template>
+              </ion-popover>
+            </ion-item>
+
+            <div class="error" *ngIf="f.dateofbirth.touched && f.dateofbirth.invalid">
+              <div *ngIf="f.dateofbirth.errors?.required">
+                dateofbirth is Required
+              </div>
+            </div>
+          </div>
+
+          <!-- gender  -->
+          <div class="form-control">
+            <ion-label class="label-text">Gender</ion-label>
+
+            <ion-item lines="none" class="input-field">
+              <ion-select value="brown" okText="ok" cancelText="cancel" formControlName="gender" class="primary-select"
+                placeholder="Eg : Male" interface="popover">
+                <ng-container *ngFor="let g of listOfGenders">
+                  <ion-select-option [value]="g?.name">{{g?.name}}</ion-select-option>
+                </ng-container>
+              </ion-select>
+            </ion-item>
+
+            <div class="error" *ngIf="f.gender.touched && f.gender.invalid">
+              <div *ngIf="f.gender.errors?.required">
+                Gender is Required
+              </div>
+            </div>
+          </div>
+
+          <!-- averageMonthlyIncome  -->
+          <div class="form-control">
+            <ion-label class="label-text">Average Monthly Income</ion-label>
+            <ion-item lines="none" class="input-field">
+              <ion-input formControlName="averageMonthlyIncome"></ion-input>
+            </ion-item>
+            <div class="error" *ngIf="f.averageMonthlyIncome.touched && f.averageMonthlyIncome.invalid">
+              <div *ngIf="f.averageMonthlyIncome.errors?.required">
+                Average Monthly Income is Required
+              </div>
+            </div>
           </div>
 
           <ion-button expand="block" class="login-btn" (click)="createUser()">Register</ion-button>
