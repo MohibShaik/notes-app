@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   DEV_HOST: 'localhost:8080',
-  apiUrl: "http://localhost:8080/",
-  // apiUrl: 'https://notes-app-apis.herokuapp.com/',
+  // apiUrl: "http://localhost:8080/",
+  apiUrl: 'https://m-notes-app.herokuapp.com/',
   envName: 'dev',
 };
 
